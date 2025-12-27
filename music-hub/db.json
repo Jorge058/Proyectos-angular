@@ -1,0 +1,316 @@
+{
+  "artists": [
+    {
+      "id": "1",
+      "name": "Scorpions",
+      "genre": "Rock/HeavyMetal",
+      "Descripcion": "Scorpions es una banda alemana de hard rock y heavy metal formada en Hannover en 1965. Fundada por Rudolf Schenker con el nombre de Nameless, en la primera alineación lo acompañaban Wolfgang Dziony (batería), Joachim Kirchhoff (bajo) y Karl Heinz-Wollmer (guitarra líder). En 1966 cambió su nombre a The Scorpions y en el verano boreal de 1968 adoptó el actual. Durante los primeros cinco años dio varios conciertos por el norte de Alemania Occidental, interpretando versiones de la llamada invasión británica. En ese lapso de tiempo hubo varios cambios de músicos, hasta que en diciembre de 1969 se sumó el vocalista Klaus Meine y el guitarrista Michael Schenker, hermano menor de Rudolf.",
+      "AlbumNames": [
+        {
+          "AlbumName": "Lonesome Crow",
+          "Anio": 1972,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2015/07/LonesomeCrow.jpg"
+        },
+        {
+          "AlbumName": "Fly to the Rainbow",
+          "Anio": 1974,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2015/07/FlyToTheRainbow.jpg"
+        },
+        {
+          "AlbumName": "In Trance",
+          "Anio": 1975,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2015/07/InTranceCover-450x450.jpg"
+        },
+        {
+          "AlbumName": "Virgin Killer",
+          "Anio": 1976,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2015/07/Virgin_Killer_alternate_pic.jpg"
+        },
+        {
+          "AlbumName": "Taken by Force",
+          "Anio": 1977,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2015/07/TakenByForce.jpg"
+        },
+        {
+          "AlbumName": "Lovedrive",
+          "Anio": 1999,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2015/07/Lovedrive-450x450.jpg"
+        },
+        {
+          "AlbumName": "Animal Magnetism",
+          "Anio": 1980,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2015/07/AnimalMagnetism-450x450.jpg"
+        },
+        {
+          "AlbumName": "Blackout",
+          "Anio": 1982,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2015/07/Blackout-450x450.jpg"
+        },
+        {
+          "AlbumName": "Love at First Sting",
+          "Anio": 1984,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2015/07/LoveAtFirstSting.jpg"
+        },
+        {
+          "AlbumName": "Savage Amusement",
+          "Anio": 1988,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2015/07/SavageAmusement-450x450.jpg"
+        },
+        {
+          "AlbumName": "Crazy World",
+          "Anio": 1990,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2015/07/CrazyWorld-450x450.jpg"
+        },
+        {
+          "AlbumName": "Face the Heat",
+          "Anio": 1993,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2015/07/FaceTheHeat-450x450.jpg"
+        },
+        {
+          "AlbumName": "Pure Instinct",
+          "Anio": 1996,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2015/07/PureInstinct-450x450.jpg"
+        },
+        {
+          "AlbumName": "Eye II Eye",
+          "Anio": 1999,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2015/07/EyeIIEye-450x450.jpg"
+        },
+        {
+          "AlbumName": "Unbreakable",
+          "Anio": 2004,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2015/07/Unbreakable-450x450.jpg"
+        },
+        {
+          "AlbumName": "Humanity: Hour I",
+          "Anio": 2007,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2015/07/scorpions-humanity-hour-i-20140324195315-450x450.jpg"
+        },
+        {
+          "AlbumName": "Sting in the Tail",
+          "Anio": 2010,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2015/07/StingInTheTail-450x450.jpg"
+        },
+        {
+          "AlbumName": "Return to Forever",
+          "Anio": 2015,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2015/07/ReturnToForever-450x450.jpg"
+        },
+        {
+          "AlbumName": "Rock Believer",
+          "Anio": 2022,
+          "pic": "https://www.the-scorpions.com/wp-content/uploads/2022/01/album-450x450.jpg"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Metallica",
+      "genre": "Metal",
+      "Descripcion": "es una banda estadounidense de heavy metal fundada en 1981 en Los Ángeles, aunque ha estado radicada en San Francisco durante la mayor parte de su carrera.[3]​ Está integrada por el vocalista y guitarrista rítmico James Hetfield, el baterista Lars Ulrich, el guitarrista líder Kirk Hammett, y el bajista Robert Trujillo. Metallica es considerada como una de las bandas comercialmente más exitosas de todos los tiempos, habiendo vendido más de 125 millones de álbumes en todo el mundo.[ ",
+      "AlbumNames": [
+        {
+          "AlbumName": "Metallica",
+          "Anio": 2005
+        },
+        {
+          "AlbumName": "Kill 'Em All",
+          "Anio": 1983
+        },
+        {
+          "AlbumName": "Ride the Lightning",
+          "Anio": 1984
+        },
+        {
+          "AlbumName": "Master of Puppets",
+          "Anio": 1986
+        },
+        {
+          "AlbumName": "...And Justice for All",
+          "Anio": 1988
+        },
+        {
+          "AlbumName": "Load",
+          "Anio": 1996
+        },
+        {
+          "AlbumName": "ReLoad",
+          "Anio": 1997
+        },
+        {
+          "AlbumName": "St. Anger",
+          "Anio": 2003
+        },
+        {
+          "AlbumName": "Death Magnetic",
+          "Anio": 2008
+        },
+        {
+          "AlbumName": "Hardwired... to Self-Destruct",
+          "Anio": 2016
+        },
+        {
+          "AlbumName": "72 Seasons",
+          "Anio": 2023
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Babasonicos",
+      "genre": "Alternativo",
+      "Descripcion": "Babasónicos es una banda argentina de rock alternativo, formada en Lanús, Buenos Aires en 1991. Al principio fueron parte del «nuevo rock argentino», movimiento compuesto por bandas como Juana La Loca, El Otro Yo, Peligrosos Gorriones y Los Brujos. El nombre es un juego de palabras entre el gurú indio Sai Baba y una pistola de juguete llamada La Pistola Sónica",
+      "AlbumNames": [
+        {
+          "Anio": 1992,
+          "AlbumName": "Pasto"
+        },
+        {
+          "Anio": 1994,
+          "AlbumName": "Trance Zomba"
+        },
+        {
+          "Anio": 1996,
+          "AlbumName": "Dopádromo"
+        },
+        {
+          "Anio": 1997,
+          "AlbumName": "Babasónica"
+        },
+        {
+          "Anio": 1999,
+          "AlbumName": "Miami"
+        },
+        {
+          "Anio": 2001,
+          "AlbumName": "Jessico"
+        },
+        {
+          "Anio": 2003,
+          "AlbumName": "Infame"
+        },
+        {
+          "Anio": 2005,
+          "AlbumName": "Anoche"
+        },
+        {
+          "Anio": 2008,
+          "AlbumName": "Mucho"
+        },
+        {
+          "Anio": 2011,
+          "AlbumName": "A propósito"
+        },
+        {
+          "Anio": 2013,
+          "AlbumName": "Romantisísmico"
+        },
+        {
+          "Anio": 2018,
+          "AlbumName": "Discutible"
+        },
+        {
+          "Anio": 2022,
+          "AlbumName": "Trinchera"
+        },
+        {
+          "Anio": 2025,
+          "AlbumName": "Cuerpos"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "The Beatles",
+      "genre": "Pop/Rock",
+      "Descripcion": "The Beatles, más conocida en el mundo hispano como los Beatles, fue una banda de rock inglesa formada en Liverpool durante los años 1960. Estuvo compuesta la mayor parte de su historia por John Lennon, Paul McCartney, George Harrison y Ringo Starr. Fueron parte fundamental del movimiento contracultural de los sesenta y el posterior reconocimiento de la música popular como forma de arte, y en la actualidad se les suele considerar como el grupo más influyente de la música popular occidental.",
+      "AlbumNames": [
+        {
+          "Anio": "1963",
+          "AlbumName": "Please Please Me",
+          "pic": "https://is4-ssl.mzstatic.com/image/thumb/Music/v4/63/11/dc/6311dc1f-f8cb-6cfb-36c1-21dcfd143da7/source/600x600bb.jpg"
+        },
+        {
+          "Anio": "1963",
+          "AlbumName": "With the Beatles",
+          "pic": "https://is2-ssl.mzstatic.com/image/thumb/Music/v4/2e/ef/98/2eef98bb-7f0d-a524-4ef9-a7d3f06acae4/source/600x600bb.jpg"
+        },
+        {
+          "Anio": "1964",
+          "AlbumName": "A Hard Day’s Night",
+          "pic": "https://is4-ssl.mzstatic.com/image/thumb/Music/v4/34/fd/0a/34fd0a7b-7fb5-9bc5-032b-c1cd3d89ddd1/source/600x600bb.jpg"
+        },
+        {
+          "Anio": "1964",
+          "AlbumName": "Beatles For Sale",
+          "pic": "https://is2-ssl.mzstatic.com/image/thumb/Music/v4/5f/f5/91/5ff59179-0878-5018-9a75-71f3bb2ad357/source/600x600bb.jpg"
+        },
+        {
+          "Anio": "1965",
+          "AlbumName": "Help!",
+          "pic": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/5b/7d/6e/5b7d6e78-9095-7453-c9ec-21032ddb8c1a/source/600x600bb.jpg"
+        },
+        {
+          "Anio": "1965",
+          "AlbumName": "Rubber Soul",
+          "pic": "https://is5-ssl.mzstatic.com/image/thumb/Music/v4/f8/4b/79/f84b79f5-4b11-2e98-2e38-23a8c575d42a/source/600x600bb.jpg"
+        },
+        {
+          "Anio": "1966",
+          "AlbumName": "Revolver",
+          "pic": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/b3/db/c7/b3dbc75f-4146-3556-ffce-4b679b3aca7e/source/600x600bb.jpg"
+        },
+        {
+          "Anio": "1967",
+          "AlbumName": "Sgt. Pepper’s Lonely Hearts Club Band",
+          "pic": "https://is5-ssl.mzstatic.com/image/thumb/Music/v4/8c/2a/05/8c2a0589-3e7b-c207-64ea-17643bac5e97/source/600x600bb.jpg"
+        },
+        {
+          "Anio": "1967",
+          "AlbumName": "Magical Mystery Tour",
+          "pic": "https://is4-ssl.mzstatic.com/image/thumb/Music/v4/33/d3/2e/33d32ef8-61d5-1785-d27b-fd3ab8ae7438/source/600x600bb.jpg"
+        },
+        {
+          "Anio": "1968",
+          "AlbumName": "The Beatles",
+          "pic": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/9d/39/13/9d39136a-7ede-758e-b6bd-86dbafc3d454/source/600x600bb.jpg"
+        },
+        {
+          "Anio": "1969",
+          "AlbumName": "Yellow Submarine",
+          "pic": "https://is2-ssl.mzstatic.com/image/thumb/Music/v4/d5/d0/7b/d5d07b72-f45e-cc17-f56b-962177368344/source/600x600bb.jpg"
+        },
+        {
+          "Anio": "1969",
+          "AlbumName": "Abbey Road",
+          "pic": "https://is2-ssl.mzstatic.com/image/thumb/Music/v4/40/d0/29/40d029b5-4c32-53d2-69d1-ea04a513c345/source/600x600bb.jpg"
+        },
+        {
+          "Anio": "1970",
+          "AlbumName": "Let It Be",
+          "pic": "https://is4-ssl.mzstatic.com/image/thumb/Music/v4/ff/8d/33/ff8d33f4-6c44-aedd-0b6c-2796930bef80/source/600x600bb.jpg"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Bon Jovi",
+      "genre": "Rock",
+      "Descripcion": "Bon Jovi es una banda estadounidense de rock formada en 1983 en Nueva Jersey por su líder y vocalista, Jon Bon Jovi. La formación actual la completan el teclista David Bryan, el batería Tico Torres, el bajista Hugh McDonald, los guitarristas Phil X y John Shanks, y el percusionista Everett Bradley. ",
+      "AlbumNames": [
+        {
+          "AlbumName": "Slipper when wet",
+          "Anio": 1980
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "Demo",
+      "password": "1234",
+      "token": "abc123"
+    }
+  ]
+}

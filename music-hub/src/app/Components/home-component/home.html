@@ -1,0 +1,52 @@
+<div class="p-3 flex items-center justify-center bg-gray-600">
+  <div class="bg-gray-800 shadow-lg rounded-lg p-8 w-full max-w-md text-center">
+    <h2 class="text-2xl font-bold text-white mb-4">
+      Bienvenido, {{ user?.username }}
+    </h2>
+
+    <p class="text-sm text-white mb-6 break-all">
+      Tu token es: <span class="font-mono text-red-600">{{ user?.token }}</span>
+    </p>
+
+    <button (click)="logout()"
+            class="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition-colors">
+      Cerrar sesión
+    </button>
+  </div>
+</div>
+
+<div class="py-3 bg-gray-600">
+  <section class="w-full bg-gray-800 text-white py-16">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h1 class="text-4xl font-bold mb-4">Bienvenido a RockBands</h1>
+      <p class="text-lg mb-6">Explora artistas, bandas y tu música favorita en un solo lugar.</p>
+      <a
+        routerLink="/artists"
+        routerLinkActive="active"
+        class="bg-red-600 text-white font-semibold px-6 py-2 rounded-lg shadow hover:bg-red-800 transition"
+      >
+        Ver Artistas
+      </a>
+    </div>
+  </section>
+  <!-- Sección de tarjetas -->
+  <section class="max-w-6xl mx-auto px-6 py-12 grid gap-8 md:grid-cols-3">
+    <div class="bg-gray-800 rounded-lg shadow p-6 hover:shadow-lg transition">
+      <h2 class="text-xl text-white font-bold mb-2">Artistas Destacados</h2>
+      <p class="text-white mb-4">Descubre los artistas más populares del momento.</p>
+      <a routerLink="/artiss" class="text-red-600 hover:underline">Explorar</a>
+    </div>
+    <div class="bg-gray-800 rounded-lg shadow p-6 hover:shadow-lg transition">
+      <h2 class="text-xl text-white font-bold mb-2">Tus Favoritos</h2>
+      <p class="text-white mb-4">Accede rápidamente a tus bandas y canciones guardadas.</p>
+      <a routerLink="/favorites" class="text-red-600 hover:underline">Ver Favoritos</a>
+    </div>
+    <div class="bg-gray-800 rounded-lg shadow p-6 hover:shadow-lg transition">
+      <h2 class="text-xl text-white font-bold mb-2">Novedades</h2>
+      <p class="text-white mb-4">Mantente al día con los últimos lanzamientos.</p>
+      <a routerLink="/news" class="text-red-600 hover:underline">Ver Novedades</a>
+    </div>
+  </section>
+</div>
+<router-outlet />
+

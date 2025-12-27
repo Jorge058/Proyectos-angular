@@ -1,0 +1,14 @@
+.artist-list {
+  list-style: none;
+  padding: 0;
+}
+.artist-list li {
+  margin: 0.5rem 0;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.genre {
+  color: #666;
+  font-style: italic;
+}

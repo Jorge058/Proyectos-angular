@@ -1,0 +1,27 @@
+<swiper-container
+  #swiper
+
+  init="false"
+  effect="coverflow"
+  grab-cursor="true"
+  centered-slides="true"
+  slides-per-view="auto"
+  navigation="true"
+  pagination="true"
+  loop="true"
+  autoplay="true"
+  coverflow-effect-rotate="10"
+  coverflow-effect-stretch="0"
+  coverflow-effect-depth="100"
+  coverflow-effect-modifier="0"
+  coverflow-effect-slide-shadows="true"
+>
+  @for (album of albums(); track album.AlbumName) {
+  <swiper-slide>
+    <div class="album-card">
+      <img [src]="album.pic" [alt]="album.AlbumName" />
+      <p class="text-white">{{ album.AlbumName }} ({{ album.Anio }})</p>
+    </div>
+  </swiper-slide>
+  }
+</swiper-container>

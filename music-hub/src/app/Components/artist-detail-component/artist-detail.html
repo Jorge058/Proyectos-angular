@@ -1,0 +1,41 @@
+<div class=" mx-auto px-6 py-2 bg-gray-600" >
+
+
+  <div class="mt-2 my-2">
+      <button routerLink="/artists"
+              class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-800 transition">
+        Volver a artistas
+      </button>
+    </div>
+  @if (artist()) {
+    <!-- Nombre -->
+    <h1 class="text-4xl font-bold text-white mb-4">
+      {{ artist()?.name }}
+    </h1>
+
+    <!-- Género -->
+    <h2 class="text-xl text-white mb-2">
+      Género:
+      <small class="text-white font-medium">{{ artist()?.genre }}</small>
+    </h2>
+
+    <!-- Descripción -->
+    <h2 class="text-xl text-white mt-6 mb-2">Descripción:</h2>
+    <p class="bg-gray-900 leading-relaxed text-white shadow rounded-lg p-4">
+      {{ artist()?.Descripcion }}
+    </p>
+
+    <!-- Álbumes -->
+    <h2 class="text-xl text-white mt-6 mb-4">Álbumes:</h2>
+    @if (artist()?.AlbumNames?.length) {
+      <albums-carousel [albums]="artist()?.AlbumNames ?? []"></albums-carousel>
+    } @else {
+      <p class="text-white italic">No hay álbumes registrados.</p>
+    }
+
+  } @else {
+    <div class="flex items-center justify-center h-64 text-white">
+      Cargando artista...
+    </div>
+  }
+</div>
