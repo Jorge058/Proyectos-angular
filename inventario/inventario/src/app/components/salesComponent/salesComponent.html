@@ -1,0 +1,47 @@
+<h2 class="text-xl font-bold mb-4">Registrar venta</h2>
+<form [formGroup]="saleForm" (ngSubmit)="addSale()" class="space-y-4 max-w-md">
+  <!-- Selector de producto -->
+  <div>
+    <label for="product_id" class="block mb-1">Producto</label>
+    <input
+      id="product_id"
+      type="number"
+      formControlName="product_id"
+      class="border px-2 py-1 w-full rounded"
+      placeholder="ID del producto"
+    />
+    @if (saleForm.get('product_id')?.invalid && saleForm.get('product_id')?.touched) {
+    <div class="text-red-500 text-sm">El producto es obligatorio</div>
+    }
+  </div>
+  <!-- Cantidad -->
+  <div>
+    <label for="quantity" class="block mb-1">Cantidad</label>
+    <input
+      id="quantity"
+      type="number"
+      formControlName="quantity"
+      class="border px-2 py-1 w-full rounded"
+      placeholder="Cantidad"
+    />
+    @if (saleForm.get('quantity')?.invalid && saleForm.get('quantity')?.touched) {
+    <div class="text-red-500 text-sm">La cantidad debe ser al menos 1</div>
+    }
+  </div>
+  <div>
+    <label for="date" class="block mb-1">Fecha</label>
+    <input id="date" type="date" formControlName="date" class="border px-2 py-1 w-full rounded" />
+  </div>
+  <button
+    type="submit"
+    [disabled]="saleForm.invalid"
+    class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
+  >
+    Registrar venta
+  </button>
+</form>
+<!-- Vista previa del formulario con signal -->
+<div class="mt-6">
+  <h3 class="font-semibold">Preview</h3>
+  <pre class="bg-gray-100 p-2 rounded">{{ saleFormSignal() | json }}</pre>
+</div>

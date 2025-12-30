@@ -1,0 +1,15 @@
+<h2>Productos</h2>
+<table>
+  @for (product of products(); track $index) {
+  <tr>
+    <td>{{ product.name }}</td>
+    <td>{{ product.price }}</td>
+    <td>{{ product.stock }}</td>
+    <td>
+      <button (click)="updateProduct(product)">Editar</button>
+      <button (click)="deleteProduct(product.id!)">Eliminar</button>
+    </td>
+  </tr>
+
+  }
+</table>
