@@ -1,11 +1,12 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
-import { VentasService } from '../../services/ventas.service';
+import { Sale, Sales, VentasService } from '../../services/ventas.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
+import { DatePipe, JsonPipe } from '@angular/common';
+import { Product, ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'sales-component',
-  imports: [ReactiveFormsModule,JsonPipe],
+  imports: [ReactiveFormsModule, JsonPipe, DatePipe],
   templateUrl: './salesComponent.html',
   styleUrl: './salesComponent.css',
 })
@@ -15,11 +16,24 @@ export class SalesComponent implements OnInit {
 
   private fb = inject(FormBuilder);
   private saleService = inject(VentasService);
+  private productService = inject(ProductService);
+
+  products = signal<Product[]>([]);
+  sales = signal<Sales[]>([]);
 
   ngOnInit() {
+    this.productService.getProducts().subscribe((data) => {
+      this.products.set(data);
+
+    });
+
+    this.saleService.getSales().subscribe((data) => {
+      this.sales.set(data)
+    })
+
     this.saleForm = this.fb.group({
-      product_id: [0, Validators.required],
-      quantity: [1, Validators.required, Validators.min(1)],
+      product_id: [null, Validators.required],
+      quantity: [1, [Validators.required, Validators.min(1)]],
       date: [new Date().toISOString().split('T')[0], Validators.required],
     });
 
@@ -33,7 +47,7 @@ export class SalesComponent implements OnInit {
       this.saleService.addSale(this.saleFormSignal()).subscribe(() => {
         alert('Venta registrada');
         this.saleForm.reset({
-          product_id: 0,
+          product_id: null,
           quantity: 1,
           date: new Date().toISOString().split('T')[0],
         });

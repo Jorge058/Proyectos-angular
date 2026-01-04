@@ -1,13 +1,28 @@
-<h2>Productos</h2>
-<table>
-  @for (product of products(); track $index) {
+<h2 class="text-xl font-bold mb-4">Productos</h2>
+<button (click)="addProduct()" class="bg-green-600 text-white px-4 py-2 rounded mb-4">
+  Agregar producto
+</button>
+<table class="table-auto w-full border-collapse border border-gray-300">
+  <thead>
+    <tr class="bg-gray-100">
+      <th class="border px-4 py-2">Nombre</th>
+      <th class="border px-4 py-2">Precio</th>
+      <th class="border px-4 py-2">Stock</th>
+      <th class="border px-4 py-2">Acciones</th>
+    </tr>
+  </thead>
+  @for (product of products(); track product.id) {
   <tr>
-    <td>{{ product.name }}</td>
-    <td>{{ product.price }}</td>
-    <td>{{ product.stock }}</td>
-    <td>
-      <button (click)="updateProduct(product)">Editar</button>
-      <button (click)="deleteProduct(product.id!)">Eliminar</button>
+    <td class="border px-4 py-2">{{ product.name }}</td>
+    <td class="border px-4 py-2">{{ product.price }}</td>
+    <td class="border px-4 py-2">{{ product.stock }}</td>
+    <td class="border px-4 py-2">
+      <button class="bg-blue-500 text-white px-2 py-1 rounded" (click)="updateProduct(product)">
+        Editar
+      </button>
+      <button class="bg-blue-500 text-white px-2 py-1 rounded" (click)="deleteProduct(product)">
+        Eliminar
+      </button>
     </td>
   </tr>
 

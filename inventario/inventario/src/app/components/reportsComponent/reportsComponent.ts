@@ -1,9 +1,10 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { DailyReport, VentasService } from '../../services/ventas.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'reports-component',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './reportsComponent.html',
   styleUrl: './reportsComponent.css',
 })

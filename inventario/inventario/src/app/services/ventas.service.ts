@@ -8,6 +8,16 @@ export interface Sale {
   quantity: number;
   date: string;
 }
+
+export interface Sales{
+  id?: number;
+  product_id: number;
+  product_name: string;
+  product_price:string;
+  quantity: number;
+  date: string;
+}
+
 export interface DailyReport {
   date: string;
   total: number;
@@ -22,8 +32,8 @@ export class VentasService {
 
   http = inject(HttpClient);
 
-  getSales(): Observable<Sale[]> {
-    return this.http.get<Sale[]>(this.apiUrl);
+  getSales(): Observable<Sales[]> {
+    return this.http.get<Sales[]>(this.apiUrl);
   }
 
   addSale(sale: Sale): Observable<any> {

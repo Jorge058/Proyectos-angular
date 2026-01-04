@@ -9,7 +9,7 @@
   <tbody>
     @for (report of reports(); track $index) {
     <tr>
-      <td class="border px-4 py-2">{{ report.date }}</td>
+      <td class="border px-4 py-2">{{ report.date | date:'dd/MM/yyyy'}}</td>
       <td class="border px-4 py-2">${{ report.total }}</td>
     </tr>
     }

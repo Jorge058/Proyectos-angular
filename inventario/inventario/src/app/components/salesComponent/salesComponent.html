@@ -2,14 +2,13 @@
 <form [formGroup]="saleForm" (ngSubmit)="addSale()" class="space-y-4 max-w-md">
   <!-- Selector de producto -->
   <div>
-    <label for="product_id" class="block mb-1">Producto</label>
-    <input
-      id="product_id"
-      type="number"
-      formControlName="product_id"
-      class="border px-2 py-1 w-full rounded"
-      placeholder="ID del producto"
-    />
+    <label for="product" class="block mb-1">Producto</label>
+    <select id="product" formControlName="product_id" class="border px-2 py-1 w-full rounded">
+      <option [ngValue]="null">Seleccione un producto</option>
+      @for (product of products(); track product.id) {
+      <option [value]="product.id">{{ product.name }}</option>
+      }
+    </select>
     @if (saleForm.get('product_id')?.invalid && saleForm.get('product_id')?.touched) {
     <div class="text-red-500 text-sm">El producto es obligatorio</div>
     }
@@ -45,3 +44,33 @@
   <h3 class="font-semibold">Preview</h3>
   <pre class="bg-gray-100 p-2 rounded">{{ saleFormSignal() | json }}</pre>
 </div>
+
+<h2 class="text-xl font-bold mb-4">Historial de ventas</h2>
+<table class="table-auto w-full border-collapse border border-gray-300">
+  <thead>
+    <tr class="bg-gray-100">
+      <th class="border px-4 py-2">Nombre</th>
+      <th class="border px-4 py-2">Cantidad</th>
+      <th class="border px-4 py-2">Precio U</th>
+      <th class="border px-4 py-2">Fecha</th>
+      <th class="border px-4 py-2">Acciones</th>
+    </tr>
+  </thead>
+  @for (sale of sales(); track sale.id) {
+  <tr>
+    <td class="border px-4 py-2">{{ sale.product_name }}</td>
+    <td class="border px-4 py-2">{{ sale.quantity }}</td>
+    <td class="border px-4 py-2">{{ sale.product_price }}</td>
+    <td class="border px-4 py-2">{{ sale.date | date:'dd/MM/yyyy' }}</td>
+    <td class="border px-4 py-2">
+      <button class="bg-blue-500 text-white px-2 py-1 rounded" >
+        Editar
+      </button>
+      <button class="bg-blue-500 text-white px-2 py-1 rounded">
+        Eliminar
+      </button>
+    </td>
+  </tr>
+
+  }
+</table>
