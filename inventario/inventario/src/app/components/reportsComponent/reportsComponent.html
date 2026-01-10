@@ -1,17 +1,20 @@
-<h2>Reporte de ventas por día</h2>
-<table class="table-auto w-full border-collapse border border-gray-300">
-  <thead>
-    <tr class="bg-gray-100">
-      <th class="border px-4 py-2">Fecha</th>
-      <th class="border px-4 py-2">Total vendido</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (report of reports(); track $index) {
-    <tr>
-      <td class="border px-4 py-2">{{ report.date | date:'dd/MM/yyyy'}}</td>
-      <td class="border px-4 py-2">${{ report.total }}</td>
-    </tr>
-    }
-  </tbody>
-</table>
+<div class="m-2 flex flex-col items-center">
+  <h1 class="text-white font-bold">Reporte de ventas por día</h1>
+  <br>
+  <table class="table-auto w-full border-collapse border border-purple-300">
+    <thead class="bg-purple-600">
+      <tr class="text-white font-bold">
+        <th class="border px-4 py-2">Fecha</th>
+        <th class="border px-4 py-2">Total vendido</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (report of reports(); track $index) {
+      <tr class="text-white font-bold text-center">
+        <td class="border px-4 py-2">{{ report.date | date : 'dd/MM/yyyy' }}</td>
+        <td class="border px-4 py-2">${{ report.total }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

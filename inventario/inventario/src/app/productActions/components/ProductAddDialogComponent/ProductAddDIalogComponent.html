@@ -1,20 +1,37 @@
-<h2 mat-dialog-title>Agregar producto</h2>
-<div mat-dialog-content>
-  <form [formGroup]="form" class="space-y-4">
-    <div>
-      <label>Nombre</label> <input formControlName="name" class="border px-2 py-1 w-full" />
-    </div>
-    <div>
-      <label>Precio</label>
-      <input type="number" formControlName="price" class="border px-2 py-1 w-full" />
-    </div>
-    <div>
-      <label>Stock</label>
-      <input type="number" formControlName="stock" class="border px-2 py-1 w-full" />
-    </div>
-  </form>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="cancel()">Cancelar</button>
-  <button mat-button color="primary" (click)="save()" [disabled]="form.invalid">Guardar</button>
+<div class="m-2">
+  <h2 mat-dialog-title class="text-center text-white font-bold">Agregar producto</h2>
+  <div mat-dialog-content>
+    <form [formGroup]="form" class="space-y-4">
+      <div>
+        <label class="text-white font-bold">Nombre</label>
+        <input formControlName="name" class="border px-2 py-1 w-full" />
+      </div>
+      <div>
+        <label class="text-white font-bold">Precio</label>
+        <input type="number" formControlName="price" class="border px-2 py-1 w-full" />
+      </div>
+      <div>
+        <label class="text-white font-bold">Stock</label>
+        <input type="number" formControlName="stock" class="border px-2 py-1 w-full" />
+      </div>
+    </form>
+  </div>
+  <div mat-dialog-actions class="flex justify-center space-x-2 mt-2">
+    <button
+      mat-button
+      (click)="cancel()"
+      class="p-2 border border-purple-600 text-purple-600 bg-white rounded font-bold hover:bg-purple-100"
+    >
+      Cancelar
+    </button>
+    <button
+      mat-button
+      color="primary"
+      (click)="save()"
+      [disabled]="form.invalid"
+      class="p-2 bg-purple-600 text-white rounded font-bold hover:bg-purple-300"
+    >
+      Guardar
+    </button>
+  </div>
 </div>

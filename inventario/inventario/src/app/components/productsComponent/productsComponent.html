@@ -1,30 +1,43 @@
-<h2 class="text-xl font-bold mb-4">Productos</h2>
-<button (click)="addProduct()" class="bg-green-600 text-white px-4 py-2 rounded mb-4">
-  Agregar producto
-</button>
-<table class="table-auto w-full border-collapse border border-gray-300">
-  <thead>
-    <tr class="bg-gray-100">
-      <th class="border px-4 py-2">Nombre</th>
-      <th class="border px-4 py-2">Precio</th>
-      <th class="border px-4 py-2">Stock</th>
-      <th class="border px-4 py-2">Acciones</th>
+<div class="p-4 bg-purple-300 mt-2">
+  <button (click)="addProduct()" class="bg-purple-600 text-white px-4 py-2 rounded mb-4 font-bold">
+    Agregar producto
+  </button>
+  <table class="table-auto w-full border-collapse border border-gray-300">
+    <thead>
+      <tr class="bg-purple-600 text-white">
+        <th class="border px-4 py-2 text-white">Nombre</th>
+        <th class="border px-4 py-2 text-white">Precio</th>
+        <th class="border px-4 py-2 text-white">Stock</th>
+        <th class="border px-4 py-2 text-white">Acciones</th>
+      </tr>
+    </thead>
+    @for (product of products(); track product.id) {
+    <tr class="justify-center text-white font-bold">
+      <td class="border px-4 py-2 text-center">{{ product.name }}</td>
+      <td class="border px-4 py-2 text-center">{{ product.price }}</td>
+      @if (product.stock > 6) {
+      <td class="border px-4 py-2 text-center text-white"><p class="bg-purple-600">{{ product.stock }}</p></td>
+      }@else if (product.stock > 4) {
+      <td class="border px-4 py-2 text-center text-purple-100"><p class="bg-yellow-400">{{ product.stock }}</p></td>
+      }@else{
+      <td class="border px-4 py-2 text-center text-white"><p class="bg-red-400">{{ product.stock }}</p></td>
+      }
+      <td class="border px-4 py-2 text-center space-x-2">
+        <button
+          class="bg-purple-600 text-white px-2 py-1 rounded hover:bg-purple-300 border border-purple-600"
+          (click)="updateProduct(product)"
+        >
+          Editar
+        </button>
+        <button
+          class="px-2 py-1 border border-purple-600 text-purple-600 bg-white rounded font-bold hover:bg-purple-100"
+          (click)="deleteProduct(product)"
+        >
+          Eliminar
+        </button>
+      </td>
     </tr>
-  </thead>
-  @for (product of products(); track product.id) {
-  <tr>
-    <td class="border px-4 py-2">{{ product.name }}</td>
-    <td class="border px-4 py-2">{{ product.price }}</td>
-    <td class="border px-4 py-2">{{ product.stock }}</td>
-    <td class="border px-4 py-2">
-      <button class="bg-blue-500 text-white px-2 py-1 rounded" (click)="updateProduct(product)">
-        Editar
-      </button>
-      <button class="bg-blue-500 text-white px-2 py-1 rounded" (click)="deleteProduct(product)">
-        Eliminar
-      </button>
-    </td>
-  </tr>
 
-  }
-</table>
+    }
+  </table>
+</div>

@@ -1,76 +1,74 @@
-<h2 class="text-xl font-bold mb-4">Registrar venta</h2>
-<form [formGroup]="saleForm" (ngSubmit)="addSale()" class="space-y-4 max-w-md">
-  <!-- Selector de producto -->
-  <div>
-    <label for="product" class="block mb-1">Producto</label>
-    <select id="product" formControlName="product_id" class="border px-2 py-1 w-full rounded">
-      <option [ngValue]="null">Seleccione un producto</option>
-      @for (product of products(); track product.id) {
-      <option [value]="product.id">{{ product.name }}</option>
+<div class="p-4 bg-purple-300 mt-2 flex flex-col items-center">
+  <form [formGroup]="saleForm" (ngSubmit)="addSale()" class="space-y-4  flex flex-col w-1/2 ">
+    <!-- Selector de producto -->
+    <div class="justify-center">
+      <label for="product" class="block mb-1 text-white font-bold">Producto</label>
+      <select id="product" formControlName="product_id" class="border px-2 py-1 w-full rounded">
+        <option [ngValue]="null">Seleccione un producto</option>
+        @for (product of products(); track product.id) {
+        <option [value]="product.id">{{ product.name }}</option>
+        }
+      </select>
+      @if (saleForm.get('product_id')?.invalid && saleForm.get('product_id')?.touched) {
+      <div class="text-red-500 text-sm">El producto es obligatorio</div>
       }
-    </select>
-    @if (saleForm.get('product_id')?.invalid && saleForm.get('product_id')?.touched) {
-    <div class="text-red-500 text-sm">El producto es obligatorio</div>
-    }
-  </div>
-  <!-- Cantidad -->
-  <div>
-    <label for="quantity" class="block mb-1">Cantidad</label>
-    <input
-      id="quantity"
-      type="number"
-      formControlName="quantity"
-      class="border px-2 py-1 w-full rounded"
-      placeholder="Cantidad"
-    />
-    @if (saleForm.get('quantity')?.invalid && saleForm.get('quantity')?.touched) {
-    <div class="text-red-500 text-sm">La cantidad debe ser al menos 1</div>
-    }
-  </div>
-  <div>
-    <label for="date" class="block mb-1">Fecha</label>
-    <input id="date" type="date" formControlName="date" class="border px-2 py-1 w-full rounded" />
-  </div>
-  <button
-    type="submit"
-    [disabled]="saleForm.invalid"
-    class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
-  >
-    Registrar venta
-  </button>
-</form>
-<!-- Vista previa del formulario con signal -->
-<div class="mt-6">
-  <h3 class="font-semibold">Preview</h3>
-  <pre class="bg-gray-100 p-2 rounded">{{ saleFormSignal() | json }}</pre>
-</div>
+    </div>
+    <!-- Cantidad -->
+    <div>
+      <label for="quantity" class="block mb-1 text-white font-bold">Cantidad</label>
+      <input
+        id="quantity"
+        type="number"
+        formControlName="quantity"
+        class="border px-2 py-1 w-full rounded"
+        placeholder="Cantidad"
+      />
+      @if (saleForm.get('quantity')?.invalid && saleForm.get('quantity')?.touched) {
+      <div class="text-red-500 text-sm">La cantidad debe ser al menos 1</div>
+      }
+    </div>
+    <div>
+      <label for="date" class="block mb-1 text-white font-bold">Fecha</label>
+      <input id="date" type="date" formControlName="date" class="border px-2 py-1 w-full rounded" />
+    </div>
+    <button
+      type="submit"
+      [disabled]="saleForm.invalid"
+      class="bg-purple-600 text-white font-bold px-4 py-2 rounded hover:bg-purple-400 disabled:opacity-50"
+    >
+      Registrar venta
+    </button>
+  </form>
+  <!-- Vista previa del formulario con signal -->
 
-<h2 class="text-xl font-bold mb-4">Historial de ventas</h2>
-<table class="table-auto w-full border-collapse border border-gray-300">
-  <thead>
-    <tr class="bg-gray-100">
-      <th class="border px-4 py-2">Nombre</th>
-      <th class="border px-4 py-2">Cantidad</th>
-      <th class="border px-4 py-2">Precio U</th>
-      <th class="border px-4 py-2">Fecha</th>
-      <th class="border px-4 py-2">Acciones</th>
+  <div class="mt-6 w-1/2">
+    <h3 class="font-semibold text-white">Preview</h3>
+    <pre class="bg-gray-100 p-2 rounded">{{ saleFormSignal() | json }}</pre>
+  </div>
+  <br>
+  <h2 class="text-xl font-bold mb-4 text-white">Historial de ventas</h2>
+  <table class="table-auto w-full border-collapse border border-purple-600">
+    <thead>
+      <tr class="bg-purple-600 text-white">
+        <th class="border px-4 py-2">Nombre</th>
+        <th class="border px-4 py-2">Cantidad</th>
+        <th class="border px-4 py-2">Precio U</th>
+        <th class="border px-4 py-2">Fecha</th>
+        <th class="border px-4 py-2">Acciones</th>
+      </tr>
+    </thead>
+    @for (sale of sales(); track sale.id) {
+    <tr class="text-white font-bold text-center">
+      <td class="border px-4 py-2">{{ sale.product_name }}</td>
+      <td class="border px-4 py-2">{{ sale.quantity }}</td>
+      <td class="border px-4 py-2">{{ sale.product_price }}</td>
+      <td class="border px-4 py-2">{{ sale.date | date : 'dd/MM/yyyy' }}</td>
+      <td class="border px-4 py-2 flex justify-center space-x-4">
+        <button class="bg-purple-600 text-white px-2 py-1 rounded  hover:bg-purple-400">Editar</button>
+        <button class="px-2 py-1 border-purple-600 text-purple-600 bg-white rounded font-bold hover:bg-purple-100">Eliminar</button>
+      </td>
     </tr>
-  </thead>
-  @for (sale of sales(); track sale.id) {
-  <tr>
-    <td class="border px-4 py-2">{{ sale.product_name }}</td>
-    <td class="border px-4 py-2">{{ sale.quantity }}</td>
-    <td class="border px-4 py-2">{{ sale.product_price }}</td>
-    <td class="border px-4 py-2">{{ sale.date | date:'dd/MM/yyyy' }}</td>
-    <td class="border px-4 py-2">
-      <button class="bg-blue-500 text-white px-2 py-1 rounded" >
-        Editar
-      </button>
-      <button class="bg-blue-500 text-white px-2 py-1 rounded">
-        Eliminar
-      </button>
-    </td>
-  </tr>
 
-  }
-</table>
+    }
+  </table>
+</div>
