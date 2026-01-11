@@ -98,6 +98,21 @@ app.post("/api/sales", async (req, res) => {
   res.json({ message: "Venta registrada" });
 });
 
+app.put("/api/sales/:id", async (req, res) => {
+  try {
+    const { product_id, quantity, date } = req.body;
+    const { id } = req.params;
+    await db.run(
+      "UPDATE sales SET product_id = ?, quantity = ?, date = ? WHERE id = ?",
+      [product_id, quantity, date, id]
+    );
+    res.json({ id, product_id, quantity, date });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Error al actualizar la venta" });
+  }
+});
+
 app.get("/api/reports/daily", async (req, res) => {
   const report = await db.all(
     `SELECT date, SUM(quantity * p.price) as total 

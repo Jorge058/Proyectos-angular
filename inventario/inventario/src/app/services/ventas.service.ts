@@ -9,11 +9,11 @@ export interface Sale {
   date: string;
 }
 
-export interface Sales{
+export interface Sales {
   id?: number;
   product_id: number;
   product_name: string;
-  product_price:string;
+  product_price: string;
   quantity: number;
   date: string;
 }
@@ -38,6 +38,10 @@ export class VentasService {
 
   addSale(sale: Sale): Observable<any> {
     return this.http.post(this.apiUrl, sale);
+  }
+
+  editSale(id: number, sale: Sale): Observable<Sale> {
+    return this.http.put<Sale>(`${this.apiUrl}/${id}`, sale);
   }
 
   getDailyReports(): Observable<DailyReport[]> {

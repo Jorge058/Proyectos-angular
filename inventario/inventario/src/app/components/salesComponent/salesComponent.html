@@ -1,12 +1,12 @@
 <div class="p-4 bg-purple-300 mt-2 flex flex-col items-center">
-  <form [formGroup]="saleForm" (ngSubmit)="addSale()" class="space-y-4  flex flex-col w-1/2 ">
+  <form [formGroup]="saleForm" (ngSubmit)="addSale()" class="space-y-4 flex flex-col w-1/2">
     <!-- Selector de producto -->
     <div class="justify-center">
       <label for="product" class="block mb-1 text-white font-bold">Producto</label>
       <select id="product" formControlName="product_id" class="border px-2 py-1 w-full rounded">
         <option [ngValue]="null">Seleccione un producto</option>
         @for (product of products(); track product.id) {
-        <option [value]="product.id">{{ product.name }}</option>
+        <option [value]="product.id" [disabled]="product.stock <= 0">{{ product.name }}</option>
         }
       </select>
       @if (saleForm.get('product_id')?.invalid && saleForm.get('product_id')?.touched) {
@@ -45,7 +45,7 @@
     <h3 class="font-semibold text-white">Preview</h3>
     <pre class="bg-gray-100 p-2 rounded">{{ saleFormSignal() | json }}</pre>
   </div>
-  <br>
+  <br />
   <h2 class="text-xl font-bold mb-4 text-white">Historial de ventas</h2>
   <table class="table-auto w-full border-collapse border border-purple-600">
     <thead>
@@ -64,8 +64,17 @@
       <td class="border px-4 py-2">{{ sale.product_price }}</td>
       <td class="border px-4 py-2">{{ sale.date | date : 'dd/MM/yyyy' }}</td>
       <td class="border px-4 py-2 flex justify-center space-x-4">
-        <button class="bg-purple-600 text-white px-2 py-1 rounded  hover:bg-purple-400">Editar</button>
-        <button class="px-2 py-1 border-purple-600 text-purple-600 bg-white rounded font-bold hover:bg-purple-100">Eliminar</button>
+        <button
+          (click)="editSale(sale)"
+          class="bg-purple-600 text-white px-2 py-1 rounded hover:bg-purple-400"
+        >
+          Editar
+        </button>
+        <button
+          class="px-2 py-1 border-purple-600 text-purple-600 bg-white rounded font-bold hover:bg-purple-100"
+        >
+          Eliminar
+        </button>
       </td>
     </tr>
 

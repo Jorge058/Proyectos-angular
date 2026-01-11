@@ -3,6 +3,8 @@ import { Sale, Sales, VentasService } from '../../services/ventas.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DatePipe, JsonPipe } from '@angular/common';
 import { Product, ProductService } from '../../services/product.service';
+import { MatDialog } from '@angular/material/dialog';
+import { SaleEditComponent } from '../../salesActions/components/saleEdit/saleEdit';
 
 @Component({
   selector: 'sales-component',
@@ -18,18 +20,17 @@ export class SalesComponent implements OnInit {
   private saleService = inject(VentasService);
   private productService = inject(ProductService);
 
+  private dialog = inject(MatDialog);
+
   products = signal<Product[]>([]);
   sales = signal<Sales[]>([]);
 
   ngOnInit() {
     this.productService.getProducts().subscribe((data) => {
       this.products.set(data);
-
     });
 
-    this.saleService.getSales().subscribe((data) => {
-      this.sales.set(data)
-    })
+    this.loadSales()
 
     this.saleForm = this.fb.group({
       product_id: [null, Validators.required],
@@ -39,6 +40,12 @@ export class SalesComponent implements OnInit {
 
     this.saleForm.valueChanges.subscribe((value) => {
       this.saleFormSignal.set(value);
+    });
+  }
+
+  loadSales() {
+    this.saleService.getSales().subscribe((data) => {
+      this.sales.set(data);
     });
   }
 
@@ -52,6 +59,22 @@ export class SalesComponent implements OnInit {
           date: new Date().toISOString().split('T')[0],
         });
       });
+      this.loadSales()
     }
+  }
+
+  editSale(sale: Sale) {
+    const dialogRef = this.dialog.open(SaleEditComponent, {
+      width: '400px',
+      data: sale
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.saleService
+          .editSale(result.id, result)
+          .subscribe(() => this.saleService.getSales().subscribe((data) => this.sales.set(data)));
+      }
+    });
   }
 }
