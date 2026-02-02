@@ -52,7 +52,8 @@
       <tr class="bg-purple-600 text-white">
         <th class="border px-4 py-2">Nombre</th>
         <th class="border px-4 py-2">Cantidad</th>
-        <th class="border px-4 py-2">Precio U</th>
+        <th class="border px-4 py-2">Precio Unitario</th>
+        <th class="border px-4 py-2">Total</th>
         <th class="border px-4 py-2">Fecha</th>
         <th class="border px-4 py-2">Acciones</th>
       </tr>
@@ -61,7 +62,8 @@
     <tr class="text-white font-bold text-center">
       <td class="border px-4 py-2">{{ sale.product_name }}</td>
       <td class="border px-4 py-2">{{ sale.quantity }}</td>
-      <td class="border px-4 py-2">{{ sale.product_price }}</td>
+      <td class="border px-4 py-2">{{ sale.price }}</td>
+      <td class="border px-4 py-2">{{ sale.total }}</td>
       <td class="border px-4 py-2">{{ sale.date | date : 'dd/MM/yyyy' }}</td>
       <td class="border px-4 py-2 flex justify-center space-x-4">
         <button

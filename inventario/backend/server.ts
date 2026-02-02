@@ -2,8 +2,11 @@ import express from "express";
 import cors from "cors";
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
+import path from "path";
 
 const app = express();
+app.use(express.static(path.join(__dirname, '../inventario/dist')));
+
 app.use(cors());
 app.use(express.json());
 
@@ -30,7 +33,8 @@ async function initDb() {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       product_id INTEGER,
       quantity INTEGER,
-      date TEXT
+      date TEXT,
+      price REAL
     );
   `);
 
@@ -71,31 +75,46 @@ app.delete("/api/products/:id", async (req, res) => {
 });
 
 app.get("/api/sales", async (req, res) => {
-  const sales = await db.all(`
-    SELECT 
-      s.id, 
-      s.product_id, 
-      p.name AS product_name, 
-      p.price AS product_price,
-      s.quantity, 
-      s.date
-    FROM sales s
-    LEFT JOIN products p ON s.product_id = p.id
-  `);
+  const sales = await db.all(
+    ` SELECT 
+    s.id,
+    s.product_id,
+    p.name AS product_name,
+    s.quantity,
+    s.date,
+    s.price,
+    (s.quantity * s.price) AS total
+    FROM sales s 
+    JOIN products p ON s.product_id = p.id 
+    ORDER BY s.date DESC
+    `);
   res.json(sales);
 });
 
 app.post("/api/sales", async (req, res) => {
   const { product_id, quantity, date } = req.body;
-  await db.run(
-    "INSERT INTO sales (product_id, quantity, date) VALUES (?,?,?)",
-    [product_id, quantity, date],
-  );
-  await db.run("UPDATE products SET stock = stock - ? WHERE id=?", [
+  const product = await db.get("SELECT * FROM products WHERE id = ?", [
+    product_id,
+  ]);
+  if (!product)
+    return res.status(404).json({ message: "Producto no encontrado" });
+  if (product.stock < quantity)
+    return res.status(400).json({ message: "Stock insuficiente" });
+  await db.run("UPDATE products SET stock = stock - ? WHERE id = ?", [
     quantity,
     product_id,
   ]);
-  res.json({ message: "Venta registrada" });
+  const result = await db.run(
+    "INSERT INTO sales (product_id, quantity, date, price) VALUES (?, ?, ?, ?)",
+    [product_id, quantity, date, product.price],
+  );
+  res.json({
+    id: result.lastID,
+    product_id,
+    quantity,
+    date,
+    price: product.price,
+  });
 });
 
 app.put("/api/sales/:id", async (req, res) => {
@@ -142,9 +161,8 @@ app.delete("/api/sales/:id", async (req, res) => {
 
 app.get("/api/reports/daily", async (req, res) => {
   const report = await db.all(
-    `SELECT date, SUM(quantity * p.price) as total 
+    `SELECT date, SUM(quantity * s.price) as total 
      FROM sales s 
-     JOIN products p ON s.product_id = p.id 
      GROUP BY date 
      ORDER BY date DESC`,
   );

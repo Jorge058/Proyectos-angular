@@ -7,15 +7,17 @@ export interface Sale {
   product_id: number;
   quantity: number;
   date: string;
+  price: number
 }
 
 export interface Sales {
   id: number;
   product_id: number;
   product_name: string;
-  product_price: string;
   quantity: number;
   date: string;
+  price:number;
+  total:number
 }
 
 export interface DailyReport {
