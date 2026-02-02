@@ -3,14 +3,14 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Sale {
-  id?: number;
+  id: number;
   product_id: number;
   quantity: number;
   date: string;
 }
 
 export interface Sales {
-  id?: number;
+  id: number;
   product_id: number;
   product_name: string;
   product_price: string;
@@ -47,4 +47,10 @@ export class VentasService {
   getDailyReports(): Observable<DailyReport[]> {
     return this.http.get<DailyReport[]>(this.reportUrl);
   }
+
+  deleteSale(id: number):Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+
+  }
 }
+

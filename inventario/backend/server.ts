@@ -47,7 +47,7 @@ app.post("/api/products", async (req, res) => {
   const { name, price, stock } = req.body;
   const result = await db.run(
     "INSERT INTO products (name, price, stock) VALUES (?,?,?)",
-    [name, price, stock]
+    [name, price, stock],
   );
   res.json({ id: result.lastID, name, price, stock });
 });
@@ -89,7 +89,7 @@ app.post("/api/sales", async (req, res) => {
   const { product_id, quantity, date } = req.body;
   await db.run(
     "INSERT INTO sales (product_id, quantity, date) VALUES (?,?,?)",
-    [product_id, quantity, date]
+    [product_id, quantity, date],
   );
   await db.run("UPDATE products SET stock = stock - ? WHERE id=?", [
     quantity,
@@ -102,15 +102,42 @@ app.put("/api/sales/:id", async (req, res) => {
   try {
     const { product_id, quantity, date } = req.body;
     const { id } = req.params;
+
+    const oldSale = await db.get("SELECT * FROM sales WHERE id = ?", [id]);
+    if (!oldSale)
+      return res.status(404).json({ message: "Venta no encontrada" });
+    // devolver stock del producto anterior
+    await db.run("UPDATE products SET stock = stock + ? WHERE id = ?", [
+      oldSale.quantity,
+      oldSale.product_id,
+    ]);
+    await db.run("UPDATE products SET stock = stock - ? WHERE id = ?", [
+      quantity,
+      product_id,
+    ]);
     await db.run(
       "UPDATE sales SET product_id = ?, quantity = ?, date = ? WHERE id = ?",
-      [product_id, quantity, date, id]
+      [product_id, quantity, date, id],
     );
-    res.json({ id, product_id, quantity, date });
+    res.json({ message: "Venta actualizada y stock ajustado" });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Error al actualizar la venta" });
   }
+});
+
+app.delete("/api/sales/:id", async (req, res) => {
+  const saleId = req.params.id;
+  const sale = await db.get("SELECT * FROM sales WHERE id = ?", [saleId]);
+
+  if (!sale) return res.status(404).json({ message: "Venta no encontrada" });
+
+  await db.run("UPDATE products SET stock = stock + ? WHERE id = ?", [
+    sale.quantity,
+    sale.product_id,
+  ]);
+  await db.run("DELETE FROM sales WHERE id = ?", [saleId]);
+  res.json({ message: "Venta eliminada y stock devuelto" });
 });
 
 app.get("/api/reports/daily", async (req, res) => {
@@ -119,7 +146,7 @@ app.get("/api/reports/daily", async (req, res) => {
      FROM sales s 
      JOIN products p ON s.product_id = p.id 
      GROUP BY date 
-     ORDER BY date DESC`
+     ORDER BY date DESC`,
   );
   res.json(report);
 });

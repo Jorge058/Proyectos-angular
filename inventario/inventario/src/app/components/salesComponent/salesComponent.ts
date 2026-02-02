@@ -5,6 +5,7 @@ import { DatePipe, JsonPipe } from '@angular/common';
 import { Product, ProductService } from '../../services/product.service';
 import { MatDialog } from '@angular/material/dialog';
 import { SaleEditComponent } from '../../salesActions/components/saleEdit/saleEdit';
+import { DeleteSale } from '../../salesActions/components/deleteSale/deleteSale';
 
 @Component({
   selector: 'sales-component',
@@ -30,7 +31,7 @@ export class SalesComponent implements OnInit {
       this.products.set(data);
     });
 
-    this.loadSales()
+    this.loadSales();
 
     this.saleForm = this.fb.group({
       product_id: [null, Validators.required],
@@ -59,14 +60,14 @@ export class SalesComponent implements OnInit {
           date: new Date().toISOString().split('T')[0],
         });
       });
-      this.loadSales()
+      this.loadSales();
     }
   }
 
   editSale(sale: Sale) {
     const dialogRef = this.dialog.open(SaleEditComponent, {
       width: '400px',
-      data: sale
+      data: sale,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -74,6 +75,27 @@ export class SalesComponent implements OnInit {
         this.saleService
           .editSale(result.id, result)
           .subscribe(() => this.saleService.getSales().subscribe((data) => this.sales.set(data)));
+      }
+    });
+  }
+
+  deleteSale(sale: Sale) {
+    const dialogRef = this.dialog.open(DeleteSale, {
+      width: '350px',
+      data: sale,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === true) {
+        this.saleService.deleteSale(sale.id).subscribe({
+          next: () => {
+            console.log('Venta eliminada:', sale.id);
+            this.saleService.getSales().subscribe((data) => this.sales.set(data));
+            this.productService.getProducts().subscribe((data) => this.products.set(data));
+          },
+          error: (err) => {
+            console.error('Error al eliminar venta:', err);
+          },
+        });
       }
     });
   }

@@ -3,14 +3,15 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Product } from '../../../services/product.service';
 
 @Component({
-  selector: 'app-product-delete-dialog-component',
+  selector: 'delete-sale',
   imports: [],
-  templateUrl: './ProductDeleteDialogComponent.html',
-  styleUrl: './ProductDeleteDialogComponent.css',
+  templateUrl: 'deleteSale.html',
+  styleUrl: './deleteSale.css',
 })
-export class ProductDeleteDialogComponent {
+export class DeleteSale {
+
   data = inject(MAT_DIALOG_DATA) as Product;
-  private dialogRef = inject(MatDialogRef<ProductDeleteDialogComponent>);
+  private dialogRef = inject(MatDialogRef<DeleteSale>);
 
   confirmDelete() {
     this.dialogRef.close(true);
